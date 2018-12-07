@@ -1,10 +1,9 @@
-//Agenda.h
-
 //agenda.h
 
 #include <algorithm>
 #include <list>
 #include "Alumno.h"
+
 
 using namespace std;
 
@@ -16,7 +15,7 @@ private:
 	list<Alumno>l;
 	int v[150];
 public:
-	inline void InsertarLista(list<Alumno>aux){l=aux;}
+	inline void InsertarLista(list<Alumno>aux){l=aux; }
 	void Buscar_Alumno(int n);
 	void Mostrar_Alumno();
     
