@@ -18,7 +18,7 @@ public:
 	inline void InsertarLista(list<Alumno>aux){l=aux; }
 	void Buscar_Alumno(int n);
 	void Mostrar_Alumno();
-    
+    void Insertar_Alumno();
 	inline list<Alumno> ObtenerLista(){return l}
 };
 

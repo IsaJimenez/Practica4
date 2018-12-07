@@ -70,7 +70,7 @@ void Profesor::CargarFicheroAlumnos(){
 		Alumno alumno;
 
 	//Declaro una lista de alumnos auxiliar
-		list <Akumno> lista;
+		list <Alumno> lista;
 
 
 	f.open("alumnos.bin", ios::in | ios::binary);//Compruebo si se ha podido abrir
@@ -109,7 +109,7 @@ void Profesor::CargarFicheroAlumnos(){
 			contador++;
 		}
 		//Al acabar de leer todos los alumnos se copia nuestra lista auxiliar en la lista que usarán el resto de métodos de nuestro programa
-		(*p_)InsertarLista(lista);
+		(*p_).InsertarLista(lista);
 		//Por último, se cierra el fichero
 		f.close();
 
