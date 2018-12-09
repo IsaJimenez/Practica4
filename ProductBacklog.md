@@ -1,10 +1,13 @@
 
 # (ANVERSO)
-## ID:030       *Iniciar Sesión en Base de Datos*
+## ID:030       *Iniciar Sesión en Base de Datos*         
+
 
 `Como usuario quiero poder iniciar sesión en la base de datos`
 
 **Prioridad**:0
+
+**Duración Estimada**:20 min
 
 
 # (REVERSO)
@@ -23,6 +26,8 @@
 
 **Prioridad**:0
 
+**Duración Estimada**:10 min
+
 # (REVERSO)
 
 * Se inserta el rol del profesor
@@ -37,6 +42,9 @@
 `Como usuario quiero poder introducir el nombre de un alumno`
 
 **Prioridad**: 1
+
+**Duración Estimada**:30 min en total incluyendo todas las funciones referentes a insertar los campos de un alumno
+
 
 # (REVERSO)
 
@@ -188,6 +196,8 @@
 
 **Prioridad**:2
 
+**Duración Estimada**:10 min
+
 # (REVERSO)
 
 * Se inserta la  Lista de Alumnos.
@@ -204,6 +214,8 @@
 
 **Prioridad**:3
 
+**Duración Estimada**:25 min
+
 # (REVERSO)
 
 * Permite que el usuario cargue el fichero binario 
@@ -218,6 +230,8 @@
 `Como usuario quiero poder introducir los datos de un alumno para almacenarlos en la Base de Datos`
 
 **Prioridad:** 4
+
+**Duración Estimada**:5h
 
 # *(REVERSO)*
  * Se puede introducir un máximo de 150 alumnos
@@ -238,6 +252,8 @@
 `Como usuario quiero poder utilizar el nombre de un  alumno que está en la Base de Datos`
  
   **Prioridad**: 5
+
+**Duración Estimada**:30 min en total incluyendo todas las funciones referentes a pbtener los campos de un alumno
   
 # (REVERSO)
 
@@ -394,6 +410,8 @@
 
 **Prioridad**:6
 
+**Duración Estimada**:10 min 
+
 # (REVERSO)
 
 * Se retorna la Lista de Alumnos de la clase Agenda
@@ -410,6 +428,8 @@
 
 **Prioridad:** 7
 
+**Duración Estimada**:4h
+
 # *(REVERSO)*
  * Se puede buscar un alumno por su Dni, apellidos o por el equipo al que pertenecen
  * Si al buscar un alumno por su apellido hay más de un alumno con el mismo apellido, se ha de avisar y buscar al alumno por su DNI
@@ -423,6 +443,8 @@
 `Como usuario quiero poder visualizar la información de uno o varios usuario`  
 
 **Prioridad:** 8
+
+**Duración Estimada**:4h
 
 # (REVERSO)
 
@@ -453,6 +475,9 @@
 `Como usuario quiero poder cambiar cualquier campo de información de un alumno previamente introducido`
 
 **Prioridad:** 10
+
+**Duración Estimada**:5h
+
 # *(REVERSO)*
  * Se puede modificar los datos de un alumnos buscando previamente a dicho alumno por su dni o apellidos
  * A la hora de modificar el campo de lider, dicho lider debe de tener asignado un grupo, por lo tanto no puede haber dos lideres en un mismo grupo, si lo hubiera debe de avisarse al usuario
@@ -468,6 +493,8 @@
 `Como usuario  quiero poder eliminar  los   alumnos que desee de la base de datos`
 
 **Prioridad**:10
+
+**Duración Estimada**:5h
 
 # (REVERSO)
 
@@ -486,6 +513,8 @@
 
 **Prioridad**:11
 
+**Duración Estimada**:30 min
+
 # (REVERSO)
 
 * Permite al usuario salir del programa cuando desee.
@@ -503,6 +532,8 @@
 
 **Prioridad**:12
 
+**Duración Estimada**:10 min
+
 # (REVERSO)
 
 * Se retorna el rol del profesor
@@ -517,6 +548,8 @@
 `Como usuario quiero poder hacer una copia de seguridad de  la base de datos`
 
 **Prioridad**:13
+
+**Duración Estimada**:2h
 
 # (REVERSO)
 
