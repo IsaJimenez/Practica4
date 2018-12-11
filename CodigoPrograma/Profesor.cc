@@ -89,7 +89,7 @@ void Profesor::CargarFicheroAlumnos(){
 			f.read((char *) &(equipo_aux),sizeof(equipo_aux));
 			f.read((char *) &(lider_aux),sizeof(lider_aux));
 
-
+			
 			//Una vez obtenidos los campos de un alumno, procedo a introducirlo en un objeto auxiliar de la clase Alumno
 			alumno.InsertarDNI(DNI_aux);
 			alumno.InsertarEmail(email_aux);
@@ -114,11 +114,73 @@ void Profesor::CargarFicheroAlumnos(){
 		f.close();
 
 	}
-	else{
+	if(contador==0){
 
-		cout<<"La lista de alumnos se encuentra vacía"<endl;
+		cout<<"La lista de alumnos se encuentra vacía"<<endl;
 
 	} //No se ha podido abrir
 
 
+}
+
+void Profesor::GuardarFicheroAlumnos(){
+	//Declaro una lista de alumnos auxiliar y le instroduzco la lista de la clase Agenda
+	list <Alumno>lista;
+	lista=(*p_).ObtenerLista();
+
+	//Declaro un ietrador de tipo  lista de alumnos 
+	list<Alumno>::iterator i;
+
+	//Creo un nuevo fichero binario
+	ofstream f("alumnos.bin",ios::binary);
+
+	//Creacion de variables auxiliares para escribir un alumno en el fichero binario
+	        string aux;
+			int n;
+            char aux1[20];
+			bool lider_aux;
+
+   for(i = lista.begin(); i != lista.end(); ++i){
+			aux=(*i).ObtenerDNI();
+			strcpy(aux1,aux.c_str());
+			f.write((char *) &(aux1),sizeof(aux1));
+
+			aux=(*i).ObtenerEmail();
+			strcpy(aux1,aux.c_str());
+			f.write((char *) &(aux1),sizeof(aux1));
+
+			aux=(*i).ObtenerNombre();
+			strcpy(aux1,aux.c_str());
+			f.write((char *) &(aux1),sizeof(aux1));
+
+			aux=(*i).ObtenerApellidos();
+			strcpy(aux1,aux.c_str());
+			f.write((char *) &(aux1),sizeof(aux1));
+
+			aux=(*i).ObtenerFechaNacimiento();
+			strcpy(aux1,aux.c_str());
+			f.write((char *) &(aux1),sizeof(aux1));
+
+			n=(*i).ObtenerTelefono();
+			f.write((char *) &(n),sizeof(n));
+
+			aux=(*i).ObtenerDireccion();
+			strcpy(aux1,aux.c_str());
+			f.write((char *) &(aux1),sizeof(aux1));
+
+			n=(*i).ObtenerCursoMayor();
+			f.write((char *) &(n),sizeof(n));
+
+			n=(*i).ObtenerEquipo();
+			f.write((char *) &(n),sizeof(n));
+
+			lider_aux=(*i).ObtenerLider();
+			f.write((char *) &(lider_aux),sizeof(lider_aux));
+
+    }
+    
+
+f.close();
+
+cout<<"Se ha guardado con éxito los alumnos en el fichero binario"<<endl<<endl;
 }

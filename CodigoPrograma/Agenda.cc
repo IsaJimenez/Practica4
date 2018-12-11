@@ -256,92 +256,96 @@ f<<"Nombre: "<<(*i).ObtenerNombre()<<endl;
 }
 
 void Agenda::Insertar_Alumno(){
+	int status=0;
 	string aux1;
 	int aux2;
 	Alumno alumno;
 	list<Alumno>::iterator i;
 
 
-	while(status == 0){
+	
 
 		//DNI
 		cout<<"Introduzca su DNI: ";
 		cin >> aux1;
-		alumno.IntroduceDNI(aux1);
+		
 
-		for(i = l.begin(); i != l.end(); ++i)·{
+		for(i = l.begin(); i != l.end(); ++i){
 			if( (*i).ObtenerDNI() == aux1 ){
-				cout<<"Ya existe ese DNI en nuestra base de datos. Se cancelará la insercion";
-				status = 1;
+				cout<<"Ya existe ese DNI en nuestra base de datos. Se cancelará la insercion"<<endl<<endl;
+				return ;
 			}
 		}
+		alumno.InsertarDNI(aux1);
 
 		cout<<"Se ha introducido el DNI correctamente"<<endl;
 
 		//Email
 		cout<<"Introduzca su email: ";
 		cin >> aux1;
-		alumno.IntroduceEmail(aux1);
+		
 
-		for(i = l.begin(); i != l.end(); ++i)·{
-			if( (*i).ObtenerDNI() == aux1 ){
-				cout<<"Ya existe ese email en nuestra base de datos. Se cancelará la insercion";
-				status = 1;
+		for(i = l.begin(); i != l.end(); ++i){
+			if( (*i).ObtenerEmail() == aux1 ){
+				cout<<"Ya existe ese email en nuestra base de datos. Se cancelará la insercion"<<endl<<endl;
+				return ;
 			}
 		}
-
+		alumno.InsertarEmail(aux1);
 		cout<<"Se ha introducido el email correctamente"<<endl;
 
 
 		//Nombre
 		cout<<"Introduzca su nombre: ";
-		cin>>aux1;
-		alumno.IntroduceNombre(aux1);
+		cin.ignore();
+		getline(cin,aux1);
+		alumno.InsertarNombre(aux1);
 		cout<<"Se ha introducido el nombre correctamente"<<endl;
 
 
 		//Apellidos
 		cout<<"Introduzca sus apellidos: ";
 		cin>>aux1;
-		alumno.IntroduceApellidos(aux1);
+		alumno.InsertarApellidos(aux1);
 		cout<<"Se han introducido los apellidos correctamente"<<endl;
 
 
 		//FechaNacimiento
 		cout<<"Introduzca su fecha de nacimiento: ";
 		cin>>aux1;
-		alumno.IntroduceFechaNacimiento(aux1);
+		alumno.InsertarFechaNacimiento(aux1);
 		cout<<"Se ha introducido la fecha de nacimiento correctamente"<<endl;
 
 
 		//Telefono
 		cout<<"Introduzca su telefono: ";
 		cin>>aux2;
-		alumno.IntroduceTelefono(aux2);
+		alumno.InsertarTelefono(aux2);
 		cout<<"Se ha introducido el telefono correctamente"<<endl;
 
 
 		//Direccion
 		cout<<"Introduzca su direccion: ";
-		cin>>aux1;
-		alumno.IntroduceDireccion(aux1);
+		cin.ignore();
+		getline(cin,aux1);
+		alumno.InsertarDireccion(aux1);
 		cout<<"Se ha introducido la direccion correctamente"<<endl;
 
 
 		//CursoMayor
 		cout<<"Introduzca el curso mayor donde se encuentre matriculado: ";
 		cin>>aux2;
-		alumno.IntroduceNombre(aux2);
+		alumno.InsertarCursoMayor(aux2);
 		cout<<"Se ha introducido el curso mayor correctamente"<<endl;
 
 
 		//Equipo y lider
 		cout<<"Quiere introducir equipo y lider (1 -> SI | 2 -> NO)?: ";
 		cin>>aux2;
-		if(aux1 == 1){
+		if(aux2 == 1){
 			cout<<"Introduzca su equipo: ";
 			cin>>aux2;
-			alumno.IntroduceEquipo(aux2);
+			alumno.InsertarEquipo(aux2);
 			cout<<"Se ha introducido el equipo correctamente"<<endl;
 
 			int eq_aux = aux2;
@@ -349,27 +353,33 @@ void Agenda::Insertar_Alumno(){
 			cout<<"Es lider de ese equipo o no (1 -> SI | 2 -> NO)?: ";
 			cin>>aux2;
 			if(aux2 == 1){
-				alumno.IntroduceLider(true);
-
-
-				for(i = l.begin(); i != l.end(); ++i)·{
+				
+				for(i = l.begin(); i != l.end(); ++i){
 					if( ((*i).ObtenerEquipo() == eq_aux) && ((*i).ObtenerLider() == true) ){
-						cout<<"Ya existe lider para ese quipo. Se procede a establecer este alumno como no lider para ese equipo";
-						cout<<"Si quiere cambiar el lider de ese quipo, en el menu principal seleccione modificar"<<endl;
-						alumno.IntroduceLider(false);
-					}
+						
+						status=1;
+					}	
 				}
+				  if(status==1){
+				  	cout<<"Ya existe lider para ese quipo. Se procede a establecer este alumno como no lider para ese equipo"<<endl;
+					cout<<"Si quiere cambiar el lider de ese quipo, en el menu principal seleccione modificar"<<endl;
+				  	alumno.InsertarLider(false);
+				  }
+				  else{
+				  	alumno.InsertarLider(1);
+					}
 			}
-			if(aux2 == 2){alumno.IntroduceLider(false);}
-
-
+			else{alumno.InsertarLider(false);}
+		}
+		
+		else{
+			alumno.InsertarEquipo(0);
+			alumno.InsertarLider(false);
 		}
 
+	
 
-	}
-	if(status == 1){cout<<"Se cancelo la insercion"<<endl<<endl;}
-	else{
 		l.push_back(alumno);
-		cout<"Se completo la insercion"<<endl<<endl;
-	}
+		cout<<"Se completo la insercion"<<endl<<endl;
+	
 }
