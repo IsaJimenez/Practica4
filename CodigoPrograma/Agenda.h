@@ -19,6 +19,7 @@ public:
 	void Buscar_Alumno(int n);
 	void Mostrar_Alumno();
     void Insertar_Alumno();
+    void Borrar_Alumno();
 	inline list<Alumno> ObtenerLista(){return l;}
 };
 

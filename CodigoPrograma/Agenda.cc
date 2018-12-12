@@ -383,3 +383,98 @@ void Agenda::Insertar_Alumno(){
 		cout<<"Se completo la insercion"<<endl<<endl;
 	
 }
+
+
+
+
+void Agenda::Borrar_Alumno(){
+	if (l.empty()){
+        		cout<<"La lista esta vacia"<<endl;
+        		return ;
+        		cout<<endl;
+        	}
+
+int eleccion;             
+cout<<"Marque que desea introducir para buscar y borrar"<<endl;
+cout<<"1. Un alumno"<<endl;
+cout<<"2. Un equipo"<<endl;
+cout<<"3. Todos los alumnos "<<endl;
+
+cin>>eleccion;
+
+	switch(eleccion){
+        case 1:{
+        	
+
+        Buscar_Alumno(1);
+
+        	if(v[1]!=-1){
+        		cout<<"Se ha encontrado más de un alumno"<<endl;
+        		cout<<"Se aconseja buscar por Dni"<<endl;
+        		return ;
+        		cout<<endl;
+
+        	}
+        	 if(v[0]==-1){
+            	cout<<"No se ha encontrado coincidencias "<<endl;
+            	return ;
+        		cout<<endl;
+
+            }
+        	list<Alumno>::iterator i; 
+        	
+           i=l.begin() ;
+
+          
+          
+          for (int k = 0; k<v[0]; ++k) {
+                i++;
+            
+          }              
+          
+          l.erase(i);
+          cout<<"Alumno borrado"<<endl;
+
+        }break;
+        
+        case 2:{
+        	
+           int borrados=0;
+           Buscar_Alumno(2);
+
+            if(v[0]==-1){
+            	cout<<"No se ha encontrado coincidencias"<<endl;
+            	return ;
+        		cout<<endl;
+            }
+            list<Alumno>::iterator i; 
+
+            
+        	for (int  j = 0; v[j]!=-1; ++j){
+              i=l.begin() ;
+          
+             for (int k = 0; k<(v[j]-borrados); ++k){    //Hay que tener en cuenta que cuando elimino el primer
+                i++;										//miembro del equipo, la lista pasa un hueco para delante
+                										//luego si el segundo memnro a eliminar es la posicion 6 en 
+              }											//la lista, ahora será la poscion 6-el numero de borrados que haya habido por delante
+            
+            l.erase(i);
+            
+            borrados++;  
+
+             cout<<"Alumno/s borrado/s"<<endl;      
+   }
+          
+        	
+        	
+
+        }break;
+
+        case 3:{
+        	
+        l.clear();
+         cout<<"Se han borrado todos los alumnos"<<endl;
+       }break;
+    }
+ }
+
