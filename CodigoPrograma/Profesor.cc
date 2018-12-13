@@ -185,7 +185,7 @@ f.close();
 cout<<"Se ha guardado con éxito los alumnos en el fichero binario"<<endl<<endl;
 }
 
-void Agenda::Funcion_Copia_Seguridad(){
+void Agenda::Copia_Seguridad(){
 
 	if (rol_=1){
 	//Declaro una lista de alumnos auxiliar y le instroduzco la lista de la clase Agenda
@@ -251,7 +251,7 @@ cout<<"Se ha guardado con éxito los alumnos en el fichero binario"<<endl<<endl;
 else{cout<<"El rol del profesor es ayudante y no puede realizar una copia de seguridad"<<endl<<endl;}
 }
 
-void Agenda::Salir_de_la_Aplicacion(){
+void Agenda::Salir_Aplicacion(){
 	//Declaro una lista de alumnos auxiliar y le instroduzco la lista de la clase Agenda
 	list <Alumno>lista;
 	lista=(*p_).ObtenerLista();
