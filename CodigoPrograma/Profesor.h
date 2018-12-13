@@ -16,6 +16,8 @@ public:
 	void Iniciar_Sesion();
 	void CargarFicheroAlumnos();
 	void GuardarFicheroAlumnos();
+	void Salir_Aplicacion();
+	void Copia_Seguridad();
 	inline void InsertarRol(int rol){rol_ = rol;}
 
 	
