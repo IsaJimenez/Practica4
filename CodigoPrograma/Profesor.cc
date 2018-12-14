@@ -185,9 +185,9 @@ f.close();
 cout<<"Se ha guardado con éxito los alumnos en el fichero binario"<<endl<<endl;
 }
 
-void Agenda::Copia_Seguridad(){
+void Profesor::Copia_Seguridad(){
 
-	if (rol_=1){
+	if (rol_==1){
 	//Declaro una lista de alumnos auxiliar y le instroduzco la lista de la clase Agenda
 	list <Alumno>lista;
 	lista=(*p_).ObtenerLista();
@@ -196,7 +196,7 @@ void Agenda::Copia_Seguridad(){
 	list<Alumno>::iterator i;
 
 	//Creo un nuevo fichero binario
-	ofstream f("alumnos_seguridad.bin",ios::binary);
+	ofstream f("Alumnos_Seguridad.bin",ios::binary);
 
 	//Creacion de variables auxiliares para escribir un alumno en el fichero binario
 	        string aux;
@@ -246,71 +246,20 @@ void Agenda::Copia_Seguridad(){
 
 f.close();
 
-cout<<"Se ha guardado con éxito los alumnos en el fichero binario"<<endl<<endl;
+cout<<"Se ha guardado con éxito los alumnos en el fichero binario de Copia seguridad"<<endl<<endl;
 }
 else{cout<<"El rol del profesor es ayudante y no puede realizar una copia de seguridad"<<endl<<endl;}
 }
 
-void Agenda::Salir_Aplicacion(){
-	//Declaro una lista de alumnos auxiliar y le instroduzco la lista de la clase Agenda
-	list <Alumno>lista;
-	lista=(*p_).ObtenerLista();
+void Profesor::Salir_Aplicacion(){
+	
 
-	//Declaro un ietrador de tipo  lista de alumnos 
-	list<Alumno>::iterator i;
 
-	//Creo un nuevo fichero binario
-	ofstream f("alumnos.bin",ios::binary);
 
-	//Creacion de variables auxiliares para escribir un alumno en el fichero binario
-	        string aux;
-			int n;
-            char aux1[20];
-			bool lider_aux;
+cout<<"Antes de salir se va a realizar guardado e la información"<<endl<<endl;
 
-   for(i = lista.begin(); i != lista.end(); ++i){
-			aux=(*i).ObtenerDNI();
-			strcpy(aux1,aux.c_str());
-			f.write((char *) &(aux1),sizeof(aux1));
+GuardarFicheroAlumnos();
 
-			aux=(*i).ObtenerEmail();
-			strcpy(aux1,aux.c_str());
-			f.write((char *) &(aux1),sizeof(aux1));
-
-			aux=(*i).ObtenerNombre();
-			strcpy(aux1,aux.c_str());
-			f.write((char *) &(aux1),sizeof(aux1));
-
-			aux=(*i).ObtenerApellidos();
-			strcpy(aux1,aux.c_str());
-			f.write((char *) &(aux1),sizeof(aux1));
-
-			aux=(*i).ObtenerFechaNacimiento();
-			strcpy(aux1,aux.c_str());
-			f.write((char *) &(aux1),sizeof(aux1));
-
-			n=(*i).ObtenerTelefono();
-			f.write((char *) &(n),sizeof(n));
-
-			aux=(*i).ObtenerDireccion();
-			strcpy(aux1,aux.c_str());
-			f.write((char *) &(aux1),sizeof(aux1));
-
-			n=(*i).ObtenerCursoMayor();
-			f.write((char *) &(n),sizeof(n));
-
-			n=(*i).ObtenerEquipo();
-			f.write((char *) &(n),sizeof(n));
-
-			lider_aux=(*i).ObtenerLider();
-			f.write((char *) &(lider_aux),sizeof(lider_aux));
-
-    }
-    
-
-f.close();
-
-cout<<"Se ha guardado con éxito los alumnos en el fichero binario"<<endl<<endl;
 cout<<"Se procede a la salida de la aplicación"<<endl<<endl;
 return;
 }
