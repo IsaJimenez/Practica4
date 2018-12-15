@@ -478,3 +478,164 @@ cin>>eleccion;
     }
  }
 
+void Agenda::Modificar_Alumno(){
+
+  if (l.empty()){
+   cout<<"La lista esta vacia"<<endl;
+   return ;
+   cout<<endl;
+  }
+
+  Buscar_Alumno(1);
+
+  if(v[1]!=-1){
+    cout<<"Se ha encontrado más de un alumno"<<endl;
+    cout<<"Se aconseja buscar por Dni"<<endl;
+    return ;
+    cout<<endl;
+  }
+
+  if(v[0]==-1){
+    cout<<"No se ha encontrado coincidencias "<<endl;
+    return ;
+    cout<<endl;
+  }
+
+  list<Alumno>::iterator i; 
+        	
+  i=l.begin() ;
+  for (int k = 0; k<v[0]; ++k) {
+   i++;  
+  }  
+
+
+  int eleccion;             
+  cout<<endl<<"Marque que desea cambiar"<<endl;
+  cout<<"1. Nombre"<<endl;
+  cout<<"2. Apellidos"<<endl;
+  cout<<"3. DNI"<<endl;
+  cout<<"4. Email"<<endl;
+  cout<<"5. Fecha Nacimiento"<<endl;
+  cout<<"6. Telefono"<<endl;
+  cout<<"7. Direccion"<<endl;
+  cout<<"8. CursoMayor"<<endl;
+  cout<<"9. Equipo"<<endl;
+  cout<<"10. Lider"<<endl;
+
+  cin>>eleccion;
+
+  int status=0;
+  string aux1;
+  int aux2;
+  list<Alumno>::iterator j; 
+
+  switch(eleccion){
+   case 1:{
+     cout<<"Introduzca nuevo nombre: ";
+  		cin.ignore();
+  		getline(cin,aux1);
+	 	 (*i).InsertarNombre(aux1);
+	 	 cout<<"Se ha introducido el nombre correctamente"<<endl;
+	 }break;
+
+	 case 2:{
+      cout<<"Introduzca sus nuevos apellidos: ";
+		  cin>>aux1;
+		  (*i).InsertarApellidos(aux1);
+		  cout<<"Se han introducido los apellidos correctamente"<<endl;
+	 }break;
+
+    case 3:{
+      cout<<"Introduzca su nuevo DNI: ";
+		  cin >> aux1;
+		
+	   for(j = l.begin(); j != l.end(); ++j){
+		      if( (*j).ObtenerDNI() == aux1 ){
+		     cout<<"Ya existe ese DNI en nuestra base de datos. Se cancelará la insercion"<<endl<<endl;
+		      return ;
+		    }
+		  }
+		  (*i).InsertarDNI(aux1);
+
+		  cout<<"Se ha introducido el DNI correctamente"<<endl;
+	 }break;
+
+    case 4:{
+     cout<<"Introduzca su nuevo email: ";
+		  cin >> aux1;
+		
+		  for(j= l.begin(); j != l.end(); ++j){
+			 if( (*j).ObtenerEmail() == aux1 ){
+				  cout<<"Ya existe ese email en nuestra base de datos. Se cancelará la insercion"<<endl<<endl;
+				  return ;
+			 }
+		  }
+		  (*i).InsertarEmail(aux1);
+		  cout<<"Se ha introducido el email correctamente"<<endl;
+	 }break;
+
+    case 5:{
+      cout<<"Introduzca su nueva fecha de nacimiento: ";
+		  cin>>aux1;
+		  (*i).InsertarFechaNacimiento(aux1);
+		  cout<<"Se ha introducido la fecha de nacimiento correctamente"<<endl;
+	 }break;
+
+	 case 6:{
+      cout<<"Introduzca su nuevo telefono: ";
+		  cin>>aux2;
+		  (*i).InsertarTelefono(aux2);
+		  cout<<"Se ha introducido el telefono correctamente"<<endl;
+	 }break;
+
+	 case 7:{
+      cout<<"Introduzca su nueva direccion: ";
+		  cin.ignore();
+		  getline(cin,aux1);
+		  (*i).InsertarDireccion(aux1);
+		  cout<<"Se ha introducido la direccion correctamente"<<endl;
+	 }break;
+
+	 case 8:{
+      cout<<"Introduzca el nuevo curso mayor donde se encuentre matriculado: ";
+		  cin>>aux2;
+		  (*i).InsertarCursoMayor(aux2);
+		  cout<<"Se ha introducido el curso mayor correctamente"<<endl;
+	 }break;
+
+	 case 9:{
+      cout<<"Introduzca su nuevo equipo: ";
+		  cin>>aux2;
+		  (*i).InsertarEquipo(aux2);
+		  cout<<"Se ha introducido el equipo correctamente"<<endl;
+		  (*i).InsertarLider(false);
+		  cout<<"Por defecto  se establece que no es lider"<<endl;
+		  cout<<"Si quiere cambiar el lider de ese quipo, en el menu principal seleccione modificar"<<endl;
+	 }break;
+
+	 case 10:{
+      int eq_aux = (*i).ObtenerEquipo();
+      cout<<eq_aux<<endl;
+
+		  cout<<"Es lider de ese equipo o no (1 -> SI | 2 -> NO)?: ";
+		  cin>>aux2;
+		  if(aux2 == 1){
+				
+			 for(j = l.begin(); j != l.end(); ++j){  
+				  if( ((*j).ObtenerEquipo() == eq_aux) && ((*j).ObtenerLider() == true) ){	 
+				  status=1;
+				  }	
+			 }
+			 if(status==1){
+				  cout<<"Ya existe lider para ese quipo. Se procede a establecer este alumno como no lider para ese equipo"<<endl;
+				  cout<<"Si quiere cambiar el lider de ese quipo, en el menu principal seleccione modificar"<<endl;
+				  (*i).InsertarLider(false);
+			 }
+			 else{
+				  (*i).InsertarLider(1);
+			 }
+		  }
+		  else{(*i).InsertarLider(false);}
+	 }break;   
+  }
+}

@@ -20,6 +20,7 @@ public:
 	void Mostrar_Alumno();
     void Insertar_Alumno();
     void Borrar_Alumno();
+    void Modificar_Alumno();
 	inline list<Alumno> ObtenerLista(){return l;}
 };
 

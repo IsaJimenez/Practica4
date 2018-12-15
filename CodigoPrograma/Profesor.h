@@ -19,6 +19,7 @@ public:
 	void Salir_Aplicacion();
 	void Copia_Seguridad();
 	inline void InsertarRol(int rol){rol_ = rol;}
+	inline int  ObtenerRol(){return rol_; }
 
 	
 };
