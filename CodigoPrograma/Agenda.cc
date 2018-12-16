@@ -104,6 +104,13 @@ for (int i = 0; i < 150; ++i)       //Se vacia vector posiciones
 
 
 void Agenda::Mostrar_Alumno(){
+
+	if (l.empty()){
+        		cout<<"La lista esta vacia"<<endl;
+        		return ;
+        		cout<<endl;
+    }
+
 int eleccion;             
 cout<<"Marque que desea introducir para buscar"<<endl;
 cout<<"1. Un alumno"<<endl;
@@ -478,6 +485,7 @@ cin>>eleccion;
     }
  }
 
+
 void Agenda::Modificar_Alumno(){
 
   if (l.empty()){
@@ -638,4 +646,5 @@ void Agenda::Modificar_Alumno(){
 		  else{(*i).InsertarLider(false);}
 	 }break;   
   }
+  cout<<endl<<"Alumn@ modificad@ correctamente"<<endl;
 }

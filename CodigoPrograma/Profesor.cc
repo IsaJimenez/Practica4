@@ -15,9 +15,9 @@ string dnip;
 string contrap;
 int rol;
 
-cout<<"Introduzca Dni"<<endl;
+cout<<"- Introduzca Dni: ";
 cin>>dnip;
-cout <<"Introduzca contraseña"<<endl;
+cout <<"- Introduzca contraseña: ";
 cin>>contrap;
 
 char dni[9];
@@ -32,8 +32,7 @@ ifstream f1("profesores.bin",ios::binary);
 	f1.read((char *) &(rol),sizeof(rol));
                                   
 	if(strcmp(dni,dnip.c_str())==0 && strcmp(contra,contrap.c_str())==0){
-		cout<<"Correcto"<<endl;
-		cout<<"Bienvenido"<<endl;
+		cout<<"Inicio de sesion correcto, bienvenid@"<<endl;
 		InsertarRol(rol);
 	}
  }
@@ -112,6 +111,7 @@ void Profesor::CargarFicheroAlumnos(){
 		(*p_).InsertarLista(lista);
 		//Por último, se cierra el fichero
 		f.close();
+		cout<<endl<<"[Cargada correctamente la base de datos]"<<endl;
 
 	}
 	if(contador==0){

@@ -29,18 +29,19 @@ p.Iniciar_Sesion();
 int eleccion;
 
 do{
-	cout<<"Que desea hacer"<<endl;
+	cout<<endl<<"-------------------------"<<endl;
+	cout<<"Que desea hacer:"<<endl;
 
-	cout<<"1. Insertar Alumno "<<endl;
-	cout<<"2. Mostrar Alumno"<<endl;
-	cout<<"3. Modificar Alumno "<<endl;
-	cout<<"4. Borrar Alumno"<<endl;
-	cout<<"5. Guardar Base de datos"<<endl;
-	cout<<"6. Copia Seguridad "<<endl;
-	cout<<"7. Salir de la aplicación "<<endl;
-
+	cout<<"1.- Insertar Alumno "<<endl;
+	cout<<"2.- Mostrar Alumno"<<endl;
+	cout<<"3.- Modificar Alumno "<<endl;
+	cout<<"4.- Borrar Alumno"<<endl;
+	cout<<"5.- Guardar Base de datos"<<endl;
+	cout<<"6.- Copia Seguridad "<<endl;
+	cout<<"7.- Salir de la aplicación "<<endl;
+	cout<<endl<<"- Su eleccion: ";
 	cin>>eleccion;
-
+	cout<<"-------------------------"<<endl<<endl;
 	switch(eleccion){
 		case 1:{
 				a.Insertar_Alumno();
