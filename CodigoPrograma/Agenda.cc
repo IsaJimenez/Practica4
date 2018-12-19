@@ -195,12 +195,6 @@ cin>>eleccion;
 
         case 3:{
         	
-        	if (l.empty()){
-        		cout<<"La lista esta vacia"<<endl;
-        		break;
-        		cout<<endl;
-        	}
-        	
   			ofstream f("Alumnos.md"); 
 
         	cout<<"Marque en qué orden lo quieres"<<endl;
